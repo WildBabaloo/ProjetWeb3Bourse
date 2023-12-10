@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ProjetWeb3Bourse.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ProjetWeb3BourseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetWeb3BourseContext") ?? throw new InvalidOperationException("Connection string 'ProjetWeb3BourseContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

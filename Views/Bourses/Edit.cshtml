@@ -1,0 +1,44 @@
+﻿@model ProjetWeb3Bourse.Models.Bourse
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Bourse</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="nom" class="control-label"></label>
+                <input asp-for="nom" class="form-control" />
+                <span asp-validation-for="nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="valeur" class="control-label"></label>
+                <input asp-for="valeur" class="form-control" />
+                <span asp-validation-for="valeur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="variation" class="control-label"></label>
+                <input asp-for="variation" class="form-control" />
+                <span asp-validation-for="variation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
