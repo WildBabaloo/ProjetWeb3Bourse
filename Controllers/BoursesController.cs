@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using ProjetWeb3Bourse.Data;
+using ProjetWeb3Bourse.Hubs;
 using ProjetWeb3Bourse.Models;
 
 namespace ProjetWeb3Bourse.Controllers
@@ -14,9 +16,12 @@ namespace ProjetWeb3Bourse.Controllers
     {
         private readonly ProjetWeb3BourseContext _context;
 
-        public BoursesController(ProjetWeb3BourseContext context)
+        private readonly IHubContext<BourseHub> _hubContext;
+
+        public BoursesController(ProjetWeb3BourseContext context, IHubContext<BourseHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         // GET: Bourses
@@ -62,6 +67,7 @@ namespace ProjetWeb3Bourse.Controllers
             {
                 _context.Add(bourse);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("NewBourse");
                 return RedirectToAction(nameof(Index));
             }
             return View(bourse);
