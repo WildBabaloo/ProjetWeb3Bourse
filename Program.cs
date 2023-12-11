@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models; // Add this for OpenApiInfo
 using ProjetWeb3Bourse.Data;
+using ProjetWeb3Bourse.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjetWeb3BourseContext>(options =>
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<ProjetWeb3BourseContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 // Add Swagger services
 builder.Services.AddEndpointsApiExplorer();
@@ -42,5 +44,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<BourseHub>("/BourseHub");
 
 app.Run();
