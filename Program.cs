@@ -45,6 +45,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapHub<BourseHub>("/BourseHub");
+app.MapHub<BourseHub>("/bourseHub");
 
 app.Run();

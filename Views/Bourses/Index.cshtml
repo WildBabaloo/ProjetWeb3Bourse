@@ -25,23 +25,9 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.valeur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.variation)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
+       @section Scripts{
+           <script src="~/js/signalr/dist/browser/signalr.js"></script>
+           <script src="~/js/IndexBourse.js"></script>
+       }
     </tbody>
 </table>
