@@ -113,7 +113,7 @@ namespace ProjetWeb3Bourse.Controllers
             _context.Bourse.Remove(bourse);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return CreatedAtAction("DeleteMovie", id, bourse);
         }
 
         private bool BourseExists(int id)
