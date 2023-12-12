@@ -12,24 +12,24 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
+            <input id="id" type="hidden" asp-for="id" />
             <div class="form-group">
                 <label asp-for="nom" class="control-label"></label>
-                <input asp-for="nom" class="form-control" />
+                <input id="nom" asp-for="nom" class="form-control" />
                 <span asp-validation-for="nom" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="valeur" class="control-label"></label>
-                <input asp-for="valeur" class="form-control" />
+                <input id="valeur" asp-for="valeur" class="form-control" />
                 <span asp-validation-for="valeur" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="variation" class="control-label"></label>
-                <input asp-for="variation" class="form-control" />
+                <input id="variation" asp-for="variation" class="form-control" />
                 <span asp-validation-for="variation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input id="savebt" type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -41,4 +41,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/Edit.js"></script>
 }

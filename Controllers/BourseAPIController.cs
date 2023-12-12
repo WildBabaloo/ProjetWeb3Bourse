@@ -78,7 +78,7 @@ namespace ProjetWeb3Bourse.Controllers
                 }
             }
 
-            return NoContent();
+            return CreatedAtAction("PutMovie", id, bourse);
         }
 
         // POST: api/BourseAPI
