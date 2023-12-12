@@ -5,7 +5,7 @@ using ProjetWeb3Bourse.Data;
 using ProjetWeb3Bourse.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ProjetWeb3BourseContext>(options =>
+builder.Services.AddDbContext<BourseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetWeb3BourseContext") ?? throw new InvalidOperationException("Connection string 'ProjetWeb3BourseContext' not found.")));
 
 // Add services to the container.

@@ -14,11 +14,11 @@ namespace ProjetWeb3Bourse.Controllers
 {
     public class BoursesController : Controller
     {
-        private readonly ProjetWeb3BourseContext _context;
+        private readonly BourseContext _context;
 
         private readonly IHubContext<BourseHub> _hubContext;
 
-        public BoursesController(ProjetWeb3BourseContext context, IHubContext<BourseHub> hubContext)
+        public BoursesController(BourseContext context, IHubContext<BourseHub> hubContext)
         {
             _context = context;
             _hubContext = hubContext;

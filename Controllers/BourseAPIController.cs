@@ -14,9 +14,9 @@ namespace ProjetWeb3Bourse.Controllers
     [ApiController]
     public class BourseAPIController : ControllerBase
     {
-        private readonly ProjetWeb3BourseContext _context;
+        private readonly BourseContext _context;
 
-        public BourseAPIController(ProjetWeb3BourseContext context)
+        public BourseAPIController(BourseContext context)
         {
             _context = context;
         }

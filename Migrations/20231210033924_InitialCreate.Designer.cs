@@ -10,7 +10,7 @@ using ProjetWeb3Bourse.Data;
 
 namespace ProjetWeb3Bourse.Migrations
 {
-    [DbContext(typeof(ProjetWeb3BourseContext))]
+    [DbContext(typeof(BourseContext))]
     [Migration("20231210033924_InitialCreate")]
     partial class InitialCreate
     {

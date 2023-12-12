@@ -7,9 +7,9 @@ using ProjetWeb3Bourse.Models;
 
 namespace ProjetWeb3Bourse.Data
 {
-    public class ProjetWeb3BourseContext : DbContext
+    public class BourseContext : DbContext
     {
-        public ProjetWeb3BourseContext (DbContextOptions<ProjetWeb3BourseContext> options)
+        public BourseContext (DbContextOptions<BourseContext> options)
             : base(options)
         {
         }

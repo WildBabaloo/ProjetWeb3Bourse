@@ -9,7 +9,7 @@ using ProjetWeb3Bourse.Data;
 
 namespace ProjetWeb3Bourse.Migrations
 {
-    [DbContext(typeof(ProjetWeb3BourseContext))]
+    [DbContext(typeof(BourseContext))]
     partial class ProjetWeb3BourseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
