@@ -45,6 +45,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapHub<BourseHub>("/bourseHub");
+app.UseEndpoints(endpoints => {
+    endpoints.MapHub<BourseHub>("/BourseHub");
+    endpoints.MapControllers();
+    endpoints.MapGet("/", context => {
+        context.Response.Redirect("/Bourses");
+        return Task.CompletedTask;
+    });
+});
 
 app.Run();

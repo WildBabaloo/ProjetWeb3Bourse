@@ -21,11 +21,12 @@ function getBourses() {
         .catch(error => alert("Erreur API"));
 }
 
-const connection = new signalR.HubConnectionBuilder().withUrl("/bourseHub").build();
+const connection = new signalR.HubConnectionBuilder().withUrl("/BourseHub").build();
 connection.start()
     .catch(function (err) { return console.error(err.tostring()) })
 
 connection.on("BourseChange", function () {
     $bourses.empty();
     getBourses();
+    console.log(getBourses.length)
 })
