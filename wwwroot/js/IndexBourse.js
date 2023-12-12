@@ -28,5 +28,4 @@ connection.start()
 connection.on("BourseChange", function () {
     $bourses.empty();
     getBourses();
-    console.log(getBourses.length)
 })

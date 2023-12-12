@@ -24,10 +24,11 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-       @section Scripts{
-           <script src="~/js/signalr/dist/browser/signalr.js"></script>
-           <script src="~/js/IndexBourse.js"></script>
-       }
+    <tbody id="bourses">
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/IndexBourse.js"></script>
+}
