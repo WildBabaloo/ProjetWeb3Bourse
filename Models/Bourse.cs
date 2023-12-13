@@ -5,6 +5,7 @@
         public string nom { get; set; }
         public double valeur { get; set; }
         public double variation { get; set; }
+        public ICollection<Evenement>? Evenements { get; set; }
 
     }
 }
