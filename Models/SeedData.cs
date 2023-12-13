@@ -29,6 +29,25 @@ namespace ProjetWeb3Bourse.Models;
                         variation = 0.32
                     }
                 );
+
+            context.Evenement.AddRange(
+                new Evenement {
+                    bourseId = 1,
+                    date = DateTime.Now,
+                    heure = DateTime.Now,
+                    valeur = 56578.51,
+                    variation = 1.01
+                },
+
+                new Evenement {
+                    bourseId = 2,
+                    date = DateTime.Now,
+                    heure = DateTime.Now,
+                    valeur = 3000.00,
+                    variation = -1.1
+                }
+
+            );
             context.SaveChanges();
         }
     }

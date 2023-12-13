@@ -15,5 +15,7 @@ namespace ProjetWeb3Bourse.Data
         }
 
         public DbSet<ProjetWeb3Bourse.Models.Bourse> Bourse { get; set; } = default!;
+
+        public DbSet<ProjetWeb3Bourse.Models.Evenement> Evenement { get; set; } = default!;
     }
 }

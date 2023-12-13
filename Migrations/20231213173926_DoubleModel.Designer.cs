@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetWeb3Bourse.Data;
 
@@ -11,9 +12,11 @@ using ProjetWeb3Bourse.Data;
 namespace ProjetWeb3Bourse.Migrations
 {
     [DbContext(typeof(BourseContext))]
-    partial class ProjetWeb3BourseContextModelSnapshot : ModelSnapshot
+    [Migration("20231213173926_DoubleModel")]
+    partial class DoubleModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
