@@ -8,14 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ProjetWeb3Bourse.Data;
 using ProjetWeb3Bourse.Models;
 
-namespace ProjetWeb3Bourse.Controllers
-{
-    public class EvenementsController : Controller
-    {
+namespace ProjetWeb3Bourse.Controllers {
+    public class EvenementsController : Controller {
         private readonly BourseContext _context;
 
-        public EvenementsController(BourseContext context)
-        {
+        public EvenementsController(BourseContext context) {
             _context = context;
         }
 
@@ -36,28 +33,25 @@ namespace ProjetWeb3Bourse.Controllers
         }
 
         // GET: Evenements/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Evenement == null)
-            {
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null || _context.Evenement == null) {
                 return NotFound();
             }
 
             var evenement = await _context.Evenement
                 .Include(e => e.bourse)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (evenement == null)
-            {
+            if (evenement == null) {
                 return NotFound();
             }
 
             return View(evenement);
         }
 
-        // GET: Evenements/Create
-        public IActionResult Create()
-        {
-            ViewData["bourseId"] = new SelectList(_context.Bourse, "id", "id");
+        // GET: Evenements/Create/5
+        public IActionResult Create(int id) {
+            ViewData["bourseId"] = new SelectList(_context.Bourse, "id", "id", id);
+            ViewData["eventId"] = id;
             return View();
         }
 
@@ -66,10 +60,8 @@ namespace ProjetWeb3Bourse.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,bourseId,date,heure,valeur,variation")] Evenement evenement)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("id,bourseId,date,heure,valeur,variation")] Evenement evenement) {
+            if (ModelState.IsValid) {
                 _context.Add(evenement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -79,16 +71,13 @@ namespace ProjetWeb3Bourse.Controllers
         }
 
         // GET: Evenements/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Evenement == null)
-            {
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null || _context.Evenement == null) {
                 return NotFound();
             }
 
             var evenement = await _context.Evenement.FindAsync(id);
-            if (evenement == null)
-            {
+            if (evenement == null) {
                 return NotFound();
             }
             ViewData["bourseId"] = new SelectList(_context.Bourse, "id", "id", evenement.bourseId);
@@ -100,28 +89,19 @@ namespace ProjetWeb3Bourse.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,bourseId,date,heure,valeur,variation")] Evenement evenement)
-        {
-            if (id != evenement.id)
-            {
+        public async Task<IActionResult> Edit(int id, [Bind("id,bourseId,date,heure,valeur,variation")] Evenement evenement) {
+            if (id != evenement.id) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(evenement);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EvenementExists(evenement.id))
-                    {
+                } catch (DbUpdateConcurrencyException) {
+                    if (!EvenementExists(evenement.id)) {
                         return NotFound();
-                    }
-                    else
-                    {
+                    } else {
                         throw;
                     }
                 }
@@ -132,18 +112,15 @@ namespace ProjetWeb3Bourse.Controllers
         }
 
         // GET: Evenements/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Evenement == null)
-            {
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null || _context.Evenement == null) {
                 return NotFound();
             }
 
             var evenement = await _context.Evenement
                 .Include(e => e.bourse)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (evenement == null)
-            {
+            if (evenement == null) {
                 return NotFound();
             }
 
@@ -153,25 +130,21 @@ namespace ProjetWeb3Bourse.Controllers
         // POST: Evenements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Evenement == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(int id) {
+            if (_context.Evenement == null) {
                 return Problem("Entity set 'BourseContext.Evenement'  is null.");
             }
             var evenement = await _context.Evenement.FindAsync(id);
-            if (evenement != null)
-            {
+            if (evenement != null) {
                 _context.Evenement.Remove(evenement);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EvenementExists(int id)
-        {
-          return (_context.Evenement?.Any(e => e.id == id)).GetValueOrDefault();
+        private bool EvenementExists(int id) {
+            return (_context.Evenement?.Any(e => e.id == id)).GetValueOrDefault();
         }
     }
 }
