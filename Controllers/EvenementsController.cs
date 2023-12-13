@@ -31,7 +31,7 @@ namespace ProjetWeb3Bourse.Controllers
                         join bourse in _context.Set<Bourse>()
                         on evenement.bourseId equals bourse.id
                         select new BourseEventViewModel { Bourse = bourse, Evenement = evenement };
-            
+
             return View(await query.ToListAsync());
         }
 

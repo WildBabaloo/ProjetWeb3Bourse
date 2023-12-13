@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetWeb3Bourse.Models.Evenement>
+﻿@model IEnumerable<ProjetWeb3Bourse.Models.BourseEventViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.bourse)
+                @Html.DisplayNameFor(model => model.Evenement.bourse)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.date)
+                @Html.DisplayNameFor(model => model.Evenement.date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.heure)
+                @Html.DisplayNameFor(model => model.Evenement.heure)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.valeur)
+                @Html.DisplayNameFor(model => model.Evenement.valeur)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.variation)
+                @Html.DisplayNameFor(model => model.Evenement.variation)
             </th>
             <th></th>
         </tr>
@@ -34,24 +34,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.bourse.id)
+                @Html.DisplayFor(modelItem => item.Evenement.bourse.nom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.date)
+                @Html.DisplayFor(modelItem => item.Evenement.date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.heure)
+                @Html.DisplayFor(modelItem => item.Evenement.heure)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.valeur)
+                @Html.DisplayFor(modelItem => item.Evenement.valeur)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.variation)
+                @Html.DisplayFor(modelItem => item.Evenement.variation)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Evenement.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Evenement.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Evenement.id">Delete</a>
             </td>
         </tr>
 }
