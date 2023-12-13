@@ -30,6 +30,28 @@
         </dd>
     </dl>
 </div>
+<br>
+<h3>Evenements</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Valeur</th>
+            <th>Variation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var evenement in Model.Evenements) {
+            <tr>
+                <td>@evenement.date</td>
+                <td>@evenement.heure</td>
+                <td>@evenement.valeur</td>
+                <td>@evenement.variation</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a asp-action="Index">Back to List</a>

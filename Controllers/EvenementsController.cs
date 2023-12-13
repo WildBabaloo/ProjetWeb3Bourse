@@ -20,10 +20,19 @@ namespace ProjetWeb3Bourse.Controllers
         }
 
         // GET: Evenements
-        public async Task<IActionResult> Index()
-        {
-            var bourseContext = _context.Evenement.Include(e => e.bourse);
-            return View(await bourseContext.ToListAsync());
+        //public async Task<IActionResult> Index()
+        //{
+        //    var bourseContext = _context.Evenement.Include(e => e.bourse);
+        //    return View(await bourseContext.ToListAsync());
+        //}
+
+        public async Task<IActionResult> Index() {
+            var query = from evenement in _context.Set<Evenement>()
+                        join bourse in _context.Set<Bourse>()
+                        on evenement.bourseId equals bourse.id
+                        select new BourseEventViewModel { Bourse = bourse, Evenement = evenement };
+            
+            return View(await query.ToListAsync());
         }
 
         // GET: Evenements/Details/5

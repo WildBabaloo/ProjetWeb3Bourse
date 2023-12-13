@@ -27,9 +27,9 @@ namespace ProjetWeb3Bourse.Controllers
         // GET: Bourses
         public async Task<IActionResult> Index()
         {
-              return _context.Bourse != null ? 
-                          View(await _context.Bourse.ToListAsync()) :
-                          Problem("Entity set 'ProjetWeb3BourseContext.Bourse'  is null.");
+            return _context.Bourse != null ? 
+            View(await _context.Bourse.ToListAsync()) :
+            Problem("Entity set 'ProjetWeb3BourseContext.Bourse'  is null.");
         }
 
         // GET: Bourses/Details/5
@@ -41,6 +41,7 @@ namespace ProjetWeb3Bourse.Controllers
             }
 
             var bourse = await _context.Bourse
+                .Include(b => b.Evenements)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (bourse == null)
             {
