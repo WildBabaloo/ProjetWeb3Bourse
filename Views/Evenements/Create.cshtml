@@ -17,12 +17,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="date" class="control-label"></label>
-                <input asp-for="date" class="form-control" />
+                <input asp-for="date" class="form-control" id="current-date" />
                 <span asp-validation-for="date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="heure" class="control-label"></label>
-                <input asp-for="heure" class="form-control" />
+                <input asp-for="heure" class="form-control" id="current-time"/>
                 <span asp-validation-for="heure" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,4 +48,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById("current-date").valueAsDate = new Date();
+        document.getElementById("current-time").valueAsDate = new Date();
+    </script>
 }
