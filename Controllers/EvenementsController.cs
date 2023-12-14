@@ -64,6 +64,15 @@ namespace ProjetWeb3Bourse.Controllers {
             if (ModelState.IsValid) {
                 _context.Add(evenement);
                 await _context.SaveChangesAsync();
+
+                var bourse = await _context.Bourse.FindAsync(evenement.bourseId);
+
+                if (bourse != null) {
+                    bourse.valeur = evenement.valeur;
+                    bourse.variation = evenement.variation;
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["bourseId"] = new SelectList(_context.Bourse, "id", "id", evenement.bourseId);
