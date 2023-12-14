@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.Evenement.heure)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Evenement.valeur)$
+                @Html.DisplayNameFor(model => model.Evenement.valeur)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Evenement.variation)%
+                @Html.DisplayNameFor(model => model.Evenement.variation)
             </th>
             <th></th>
         </tr>
@@ -40,15 +40,16 @@
                 @Html.DisplayFor(modelItem => item.Evenement.heure)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Evenement.valeur)
+                @Html.DisplayFor(modelItem => item.Evenement.valeur)$
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Evenement.variation)
+                @Html.DisplayFor(modelItem => item.Evenement.variation)%
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Evenement.id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Evenement.id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Evenement.id">Delete</a>
+			<td>
+			<a asp-action="Details" asp-route-id="@item.Evenement.id">Details</a>
+                    <!--| <a asp-action="Edit" asp-route-id="@item.Evenement.id">Edit</a> |
+                     
+                    <a asp-action="Delete" asp-route-id="@item.Evenement.id">Delete</a>-->
             </td>
         </tr>
 }
