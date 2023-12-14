@@ -63,11 +63,16 @@ namespace ProjetWeb3Bourse.Controllers {
         public async Task<IActionResult> Create([Bind("bourseId,date,heure,valeur,variation")] Evenement evenement) {
             if (ModelState.IsValid) {
                 _context.Add(evenement);
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
 
                 var bourse = await _context.Bourse.FindAsync(evenement.bourseId);
 
                 if (bourse != null) {
+                    if (bourse.variation == 0) {
+                        evenement.variation = evenement.valeur; 
+                    } else {
+                        evenement.variation = Math.Round((((evenement.valeur - bourse.valeur) / bourse.valeur) * 100), 2);
+                    }
                     bourse.valeur = evenement.valeur;
                     bourse.variation = evenement.variation;
                     await _context.SaveChangesAsync();

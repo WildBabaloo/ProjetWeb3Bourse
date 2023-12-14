@@ -9,7 +9,7 @@ function getBourses() {
             let template = `<tr>
                                 <td>${bourse.nom}</td>
                                 <td>${bourse.valeur}</td>
-                                <td>${bourse.variation}</td>
+                                <td>${bourse.variation}%</td>
                                 <td>
                                 <a href = "/Bourses/Details/${bourse.id}"> Details </a> |
                                 <a href = "/Bourses/Edit/${bourse.id}">Edit</a> |
