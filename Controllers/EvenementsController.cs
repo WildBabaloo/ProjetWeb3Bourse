@@ -55,12 +55,12 @@ namespace ProjetWeb3Bourse.Controllers {
             return View();
         }
 
-        // POST: Evenements/Create
+        // POST: Evenements/Create/BourseId
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,bourseId,date,heure,valeur,variation")] Evenement evenement) {
+        public async Task<IActionResult> Create([Bind("bourseId,date,heure,valeur,variation")] Evenement evenement) {
             if (ModelState.IsValid) {
                 _context.Add(evenement);
                 await _context.SaveChangesAsync();
