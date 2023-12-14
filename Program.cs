@@ -9,7 +9,7 @@ builder.Services.AddDbContext<BourseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetWeb3BourseContext") ?? throw new InvalidOperationException("Connection string 'ProjetWeb3BourseContext' not found.")));
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddSignalR();
 
 // Add Swagger services
